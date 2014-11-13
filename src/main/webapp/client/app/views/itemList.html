@@ -1,0 +1,41 @@
+<div class="panel panel-danger well well-sm " ng-app>
+  <div class="panel-heading">
+
+    <table>
+      <tr>
+        <th><h2 id="itemList_category">商场</h2></th>
+        <th><h4 class="text-right">GOODS LIST!!!</h4></th>
+      </tr>
+    </table>
+  </div>
+
+  <table class="table text-center">
+
+    <tr>
+      <th class="text-center">分类</th>
+      <th class="text-center">名称</th>
+      <th class="text-center">单价</th>
+      <th class="text-center">单位</th>
+      <th class="text-center">操作</th>
+    </tr>
+
+    <tr ng-repeat="item in itemList">
+      <td>{{item.category.name}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.unit}}</td>
+      <td>
+        <button type="button" class="btn btn-primary cartPlus_btn"
+                ng-click="addToCart(item)">添加
+        </button>
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+
+
+
+
+

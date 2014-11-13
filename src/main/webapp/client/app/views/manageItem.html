@@ -1,0 +1,56 @@
+<div class="panel panel-danger well well-sm " ng-app>
+
+  <div class="panel-heading">
+    <div class="row">
+
+      <div class="col-md-6">
+        <table>
+          <tr>
+            <th><h2>管理商品信息</h2></th>
+            <th><h4 class="text-right">MANAGE GOODSITEMS</h4></th>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-md-3">
+        查找: <input ng-model="searchGoodsItems" class="form-control" placeholder="请输入商品信息">
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <h1 class="text-right">
+          <a role="button" href="#addItem" class="btn btn-primary btn-lg">添加</a>
+        </h1>
+      </div>
+
+    </div>
+  </div>
+
+  <table class="table text-center">
+
+    <tr>
+      <th class="text-center">分类</th>
+      <th class="text-center">名称</th>
+      <th class="text-center">单价</th>
+      <th class="text-center">单位</th>
+      <th class="text-center">操作</th>
+    </tr>
+
+    <tr ng-repeat="product in products |filter:searchGoodsItems">
+      <td>{{product.category.name}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.unit}}</td>
+      <td>
+        <button type="button" class="btn btn-danger " ng-click="deleteItem($index)">删除</button>
+        <a class="btn btn-warning" role="button" href="#/modifyItem/{{product.id}}">修改</a>
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+
+
+
+
+
+
