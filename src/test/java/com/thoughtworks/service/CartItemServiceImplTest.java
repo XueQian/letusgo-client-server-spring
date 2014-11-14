@@ -71,6 +71,12 @@ public class CartItemServiceImplTest {
         cartItemServiceImpl.deleteCartItem(1);
         verify(cartItemDatabaseDaoImpl).deleteCartItem(1);
     }
+
+    @Test
+    public void should_delete_cartItems(){
+        cartItemServiceImpl.deleteCartItems();
+        verify(cartItemDatabaseDaoImpl).deleteCartItems();
+    }
 }
 
 
