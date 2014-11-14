@@ -3,6 +3,7 @@
 angular.module('letusgoApp')
     .service('CartService', function ($http) {
 
+
         this.getCartItems = function (callback) {
             $http.get(' http://localhost:8080/api/cartitems').
                 success(function (data) {
@@ -10,31 +11,24 @@ angular.module('letusgoApp')
                 });
         };
 
-        this.addToCart = function (item, callback) {
+        this.addToCart = function (item) {
             this.getCartItems(function (data) {
+                var result =   _.find(data, function (cartItem) {
+                    return  item.id=== cartItem.item.id;
+                });
 
-                var cartItems = data;
+                if (result !== undefined) {
+                        $http.put('http://localhost:8080/api/cartitems/' + result.id, {id: result.id, item: result.item, count: result.count + 1});
 
-                if (hasExistItem(item, data)) {
-                    var existCartItem = getExistCartItem(item, cartItems);
-                    existCartItem.count++;
-
-                } else {
-                    cartItems.push({item: item, count: 1});
-                }
-
-                $http.post('http://localhost:8080/api/cartItems', {cartItems: cartItems})
-                    .success(function () {
-                        callback();
-                    });
-
+                    } else {
+                        $http.post('http://localhost:8080/api/cartitems', {id: null, item: item, count: 1});
+                    }
             });
 
         };
 
-
         this.changeCartItemCount = function (cartItem) {
-            $http.put('http://localhost:8080/api/cartitems/' + cartItem.id, {id:cartItem.id,item:cartItem.item,count:cartItem.count});
+            $http.put('http://localhost:8080/api/cartitems/' + cartItem.id, {id: cartItem.id, item: cartItem.item, count: cartItem.count});
         };
 
         this.getTotalCount = function (cartItems) {
@@ -61,21 +55,4 @@ angular.module('letusgoApp')
         this.deleteCartItem = function (id) {
             $http.delete('http://localhost:8080/api/cartitems/' + id);
         };
-
-
-        function hasExistItem(item, cartItems) {
-
-            return _.any(cartItems, function (cartItem) {
-                return item.name === cartItem.item.name;
-            });
-        }
-
-        function getExistCartItem(item, cartItems) {
-
-            return _.find(cartItems, function (cartItem) {
-                return item.name === cartItem.item.name;
-            });
-        }
-
-
     });
