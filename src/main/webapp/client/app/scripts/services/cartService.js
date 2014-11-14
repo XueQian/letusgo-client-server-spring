@@ -33,13 +33,10 @@ angular.module('letusgoApp')
         };
 
 
-        this.changeCartItemCount = function (cartItem, callback) {
+        this.changeCartItemCount = function (cartItem) {
 
             var id = cartItem.item.id;
-            $http.put('http://localhost:8080/api/cartitems/' + id, {cartItem: cartItem})
-                .success(function (data) {
-                    callback(data);
-                });
+            $http.put('http://localhost:8080/api/cartitems/' + id, {id:id,item:cartItem.item,count:cartItem.count});
         };
 
         this.getTotalCount = function (cartItems) {
