@@ -15,8 +15,12 @@ angular.module('letusgoApp')
             this.getItems(function (data) {
 
                 if (!hasExistItem(item, data)) {
-                    console.log(item.category.id+'---------');
-                    $http.post('http://localhost:8080/api/items', {id: null, name: item.name, unit: item.unit, price: item.price, categoryId: item.category.id});
+                    $http.post('http://localhost:8080/api/items',
+                        {id: null,
+                        name: item.name,
+                        unit: item.unit,
+                        price: item.price,
+                        categoryId: item.category.id});
                 }
 
             });
