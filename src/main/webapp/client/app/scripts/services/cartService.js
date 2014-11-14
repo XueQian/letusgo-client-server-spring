@@ -49,7 +49,7 @@ angular.module('letusgoApp')
         };
 
         this.remove = function () {
-            $http.post('/api/payment');
+            $http.delete('http://localhost:8080/api/cartitems');
         };
 
         this.deleteCartItem = function (id) {
