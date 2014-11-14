@@ -20,10 +20,6 @@ public class ItemControllerTest {
 
     private Item item;
 
-//    public ItemControllerTest(ItemController itemController) {
-//        this.itemController = itemController;
-//    }
-
     @Before
     public void before() {
         itemServiceImpl = mock(ItemService.class);
