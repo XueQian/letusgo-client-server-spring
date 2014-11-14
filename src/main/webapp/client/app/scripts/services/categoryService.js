@@ -16,12 +16,8 @@ angular.module('letusgoApp')
 
                 if (!hasExistCategory(category, data)) {
 
-                    $http.post('http://localhost:8080/api/categories', {id: null, name: category.name})
-                        .success(function (data) {
-                            callback(data);
-                        });
+                    $http.post('http://localhost:8080/api/categories', {id: null, name: category.name});
                 }
-
             });
         };
 
