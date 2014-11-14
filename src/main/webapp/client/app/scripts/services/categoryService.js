@@ -4,7 +4,7 @@ angular.module('letusgoApp')
   .service('CategoryService', function ($http) {
 
     this.getCategories = function (callback) {
-      $http.get('/api/categories').
+      $http.get('http://localhost:8080/api/categories').
         success(function (data) {
           callback(data);
         });
@@ -21,7 +21,7 @@ angular.module('letusgoApp')
           setExistCatogory(category,categoryList);
         }
 
-        $http.post('/api/categories', {categoryList: categoryList})
+        $http.post('http://localhost:8080/api/categories', {categoryList: categoryList})
           .success(function (data) {
             callback(data);
           });
@@ -30,12 +30,12 @@ angular.module('letusgoApp')
     };
 
     this.deleteCategory = function (id) {
-      $http.delete('/api/categories/' + id);
+      $http.delete('http://localhost:8080/api/categories/' + id);
     };
 
     this.getcategory = function (id, callback) {
 
-      $http.get('/api/categories/' + id)
+      $http.get('http://localhost:8080/api/categories/' + id)
         .success(function (data) {
           callback(data);
         });
@@ -43,7 +43,7 @@ angular.module('letusgoApp')
 
     this.modifyCategory = function (id, category, callback) {
 
-      $http.put('/api/categories/' + id, {category: category})
+      $http.put('http://localhost:8080/api/categories/' + id, {category: category})
         .success(function (data) {
           callback(data);
         });

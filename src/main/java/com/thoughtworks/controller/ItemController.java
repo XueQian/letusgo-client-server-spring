@@ -15,7 +15,7 @@ public class ItemController {
     @Autowired
     private ItemService itemServiceImpl;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public List<Item> getItems() {
         return itemServiceImpl.getItems();
     }
@@ -31,7 +31,7 @@ public class ItemController {
         itemServiceImpl.deleteItem(id);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void addItem(@RequestBody Item item) {
         itemServiceImpl.addItem(item);
