@@ -30,7 +30,6 @@ angular.module('letusgoApp')
     };
 
     this.deleteItem = function (id) {
-        console.log(id);
       $http.delete('http://localhost:8080/api/items/' + id);
     };
 
