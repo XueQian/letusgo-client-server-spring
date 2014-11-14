@@ -29,7 +29,7 @@ angular.module('letusgoApp')
       });
     };
 
-    this.deleteGoodsItems = function (id) {
+    this.deleteItem = function (id) {
       $http.delete('http://localhost:8080/api/items/' + id);
     };
 

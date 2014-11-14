@@ -24,7 +24,7 @@ angular.module('letusgoApp')
 
     $scope.deleteItem = function (index) {
 
-      ItemService.deleteGoodsItems(index);
+      ItemService.deleteItem(index);
 
       ItemService.getItems(function (data) {
         $scope.items = data;
