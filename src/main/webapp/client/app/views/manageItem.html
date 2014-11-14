@@ -34,11 +34,11 @@
       <th class="text-center">操作</th>
     </tr>
 
-    <tr ng-repeat="product in products |filter:searchGoodsItems">
-      <td>{{product.category.name}}</td>
-      <td>{{product.name}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.unit}}</td>
+    <tr ng-repeat="item in items |filter:searchGoodsItems">
+      <td>{{item.category.name}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.unit}}</td>
       <td>
         <button type="button" class="btn btn-danger " ng-click="deleteItem($index)">删除</button>
         <a class="btn btn-warning" role="button" href="#/modifyItem/{{product.id}}">修改</a>

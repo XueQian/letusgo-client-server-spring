@@ -10,7 +10,7 @@ angular.module('letusgoApp')
     $scope.$emit(new EventName().PARENT_MANAGE_ACTIVE);
 
     ItemService.getGoodsItems(function (data) {
-      $scope.products = data;
+      $scope.items = data;
     });
 
     $scope.deleteItem = function (index) {
@@ -18,7 +18,7 @@ angular.module('letusgoApp')
       ItemService.deleteGoodsItems(index);
 
       ItemService.getGoodsItems(function (data) {
-        $scope.products = data;
+        $scope.items = data;
       });
     };
 
@@ -29,7 +29,7 @@ angular.module('letusgoApp')
     $scope.addItem = function () {
 
       ItemService.addItem($scope.item, function (data) {
-        $scope.products = data;
+        $scope.items = data;
         $location.path('/manageItem');
       });
     };
