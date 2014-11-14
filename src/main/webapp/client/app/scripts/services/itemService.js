@@ -4,7 +4,7 @@ angular.module('letusgoApp')
   .service('ItemService', function ($http) {
 
     this.getGoodsItems = function (callback) {
-      $http.get('/api/items').
+      $http.get('http://localhost:8080/api/items').
         success(function (data) {
           callback(data);
         });
@@ -21,7 +21,7 @@ angular.module('letusgoApp')
           setExistItem(item,itemList);
         }
 
-        $http.post('/api/items', {itemList: itemList})
+        $http.post('http://localhost:8080/api/items', {itemList: itemList})
           .success(function (data) {
             callback(data);
           });
@@ -30,12 +30,12 @@ angular.module('letusgoApp')
     };
 
     this.deleteGoodsItems = function (id) {
-      $http.delete('/api/items/' + id);
+      $http.delete('http://localhost:8080/api/items/' + id);
     };
 
     this.getItem = function (id, callback) {
 
-      $http.get('/api/items/' + id)
+      $http.get('http://localhost:8080/api/items/' + id)
         .success(function (data) {
           callback(data);
         });
@@ -43,7 +43,7 @@ angular.module('letusgoApp')
 
     this.modifyItem = function (id, item, callback) {
 
-      $http.put('/api/items/' + id, {item: item})
+      $http.put('http://localhost:8080/api/items/' + id, {item: item})
         .success(function (data) {
           callback(data);
         });

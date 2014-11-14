@@ -4,7 +4,7 @@ angular.module('letusgoApp')
   .service('CartService', function ($http) {
 
     this.getCartItems = function (callback) {
-      $http.get('/api/cartItems').
+      $http.get(' http://localhost:8080/api/cartItems').
         success(function (data) {
           callback(data);
         });
