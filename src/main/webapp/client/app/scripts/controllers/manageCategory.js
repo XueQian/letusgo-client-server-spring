@@ -17,10 +17,6 @@ angular.module('letusgoApp')
         }
         update();
 
-//        $scope.getItem = function (id) {
-//            return ItemService.getItem(id);
-//        };
-
         $scope.deleteCategory = function (id) {
             CategoryService.deleteCategory(id);
             update();

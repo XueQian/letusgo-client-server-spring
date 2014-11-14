@@ -39,9 +39,8 @@ public class ItemController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void modifyItem(@PathVariable int id, @RequestBody Item item) {
+    public void modifyItem(@RequestBody Item item,@PathVariable int id) {
         item.setId(id);
         itemServiceImpl.modifyItem(item);
     }
-
 }
