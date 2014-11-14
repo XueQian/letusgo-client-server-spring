@@ -29,7 +29,8 @@ public class CartItemController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void modifyCartItem(@RequestBody CartItem cartItem) {
+    public void modifyCartItem(@RequestBody CartItem cartItem, @PathVariable int id) {
+        cartItem.setId(id);
         cartItemServiceImpl.modifyCartItem(cartItem);
     }
 
@@ -37,6 +38,12 @@ public class CartItemController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCartItem(@PathVariable int id) {
         cartItemServiceImpl.deleteCartItem(id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCartItems(){
+        cartItemServiceImpl.deleteCartItems();
     }
 
 }
