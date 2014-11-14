@@ -52,13 +52,4 @@ public class CartItemServiceImpl implements CartItemService{
         cartItemDatabaseDaoImpl.deleteCartItems();
     }
 
-    @Override
-    public CartItem getCartItem(int id) {
-        CartItemDatabase cartItemDatabase = cartItemDatabaseDaoImpl.getCartItem(id);
-        CartItem cartItem = new CartItem(cartItemDatabase.getId(),
-                itemServiceImpl.getItem(cartItemDatabase.getItemId()),
-                cartItemDatabase.getCount()
-        );
-        return cartItem;
-    }
 }

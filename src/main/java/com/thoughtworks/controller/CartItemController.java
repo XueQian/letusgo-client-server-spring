@@ -45,10 +45,4 @@ public class CartItemController {
     public void deleteCartItems(){
         cartItemServiceImpl.deleteCartItems();
     }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public CartItem getCartItem(@PathVariable int id) {
-
-        return cartItemServiceImpl.getCartItem(id);
-    }
 }
