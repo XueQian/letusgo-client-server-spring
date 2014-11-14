@@ -55,4 +55,5 @@ angular.module('letusgoApp')
         this.deleteCartItem = function (id) {
             $http.delete('http://localhost:8080/api/cartitems/' + id);
         };
+
     });

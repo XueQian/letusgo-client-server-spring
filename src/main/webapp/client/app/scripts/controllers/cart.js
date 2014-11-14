@@ -15,11 +15,10 @@ angular.module('letusgoApp')
             });
         }
         function getTotalCount() {
-
             CartService.getTotalCount($scope.cartItems);
             $scope.$emit(new EventName().PARENT_TOTAL_COUNT);
-
         }
+
         $scope.$emit(new EventName().PARENT_CART_ACTIVE);
         $scope.$emit(new EventName().PARENT_TOTAL_COUNT);
 
@@ -29,12 +28,9 @@ angular.module('letusgoApp')
 
             getTotalCount();
             getCartItems();
-
         };
 
         $scope.deleteCartItem = function (id) {
             CartService.deleteCartItem(id);
-
         }
-
     });

@@ -32,7 +32,7 @@
     </tr>
 
     <tr ng-repeat="category in categories | filter:searchCategory">
-      <td>{{category.name}}</td>
+        <td>{{category.name}}</td>
       <td>
         <button type="button" class="btn btn-danger " ng-click="deleteCategory(category.id)">
           删除

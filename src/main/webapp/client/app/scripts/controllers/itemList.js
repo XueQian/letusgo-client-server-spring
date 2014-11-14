@@ -10,23 +10,27 @@ angular.module('letusgoApp')
 
         $scope.$emit(new EventName().PARENT_ITEMLIST_ACTIVE);
 
-        ItemService.getItems(function (data) {
+        function update(){
+            ItemService.getItems(function (data) {
 
-            _(data).forEach(function (item) {
+                _(data).forEach(function (item) {
 
-                CategoryService.getCategory(item.categoryId, function (data) {
-                    item.category = data.name;
+                    CategoryService.getCategory(item.categoryId, function (data) {
+                        item.category = data.name;
+                    });
+
                 });
 
+                $scope.items = data;
             });
-
-            $scope.items = data;
-        });
+        }
+        update();
 
         $scope.$emit(new EventName().PARENT_TOTAL_COUNT);
 
         $scope.addToCart = function (item) {
             CartService.addToCart(item, function () {
+                update();
                 $scope.$emit(new EventName().PARENT_TOTAL_COUNT);
             });
         };
