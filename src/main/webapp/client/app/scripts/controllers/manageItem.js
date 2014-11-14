@@ -36,10 +36,14 @@ angular.module('letusgoApp')
 
         $scope.addItem = function () {
 
-            ItemService.addItem($scope.item, function (data) {
-                $scope.items = data;
+            ItemService.addItem($scope.item, function () {
+                update();
                 $location.path('/manageItem');
             });
         };
+
+        CategoryService.getCategories(function (data) {
+            $scope.categories = data;
+        });
 
     });

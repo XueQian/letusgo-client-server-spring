@@ -10,7 +10,7 @@ angular.module('letusgoApp')
                 });
         };
 
-        this.addCategory = function (category, callback) {
+        this.addCategory = function (category) {
 
             this.getCategories(function (data) {
 
