@@ -1,42 +1,45 @@
 'use strict';
 
 angular.module('letusgoApp')
-  .controller('manageItemCtrl', function ($location, $scope, CategoryService, ItemService) {
+    .controller('manageItemCtrl', function ($location, $scope, CategoryService, ItemService) {
 
-    function EventName() {
-      this.PARENT_MANAGE_ACTIVE = 'parent_manageActive';
-    }
+        function EventName() {
+            this.PARENT_MANAGE_ACTIVE = 'parent_manageActive';
+        }
 
-    $scope.$emit(new EventName().PARENT_MANAGE_ACTIVE);
+        $scope.$emit(new EventName().PARENT_MANAGE_ACTIVE);
 
-    ItemService.getItems(function (data) {
+        function update() {
+            ItemService.getItems(function (data) {
 
-        _(data).forEach(function (item) {
+                _(data).forEach(function (item) {
 
-            CategoryService.getCategory(item.categoryId,function(data){
-                item.category = data.name;
+                    CategoryService.getCategory(item.categoryId, function (data) {
+                        item.category = data.name;
+                    });
+
+                });
+
+                $scope.items = data;
             });
 
-        });
+        }
 
-      $scope.items = data;
+        update();
+
+        $scope.deleteItem = function (id) {
+
+            ItemService.deleteItem(id);
+
+            update();
+        };
+
+        $scope.addItem = function () {
+
+            ItemService.addItem($scope.item, function (data) {
+                $scope.items = data;
+                $location.path('/manageItem');
+            });
+        };
+
     });
-
-    $scope.deleteItem = function (index) {
-
-      ItemService.deleteItem(index);
-
-      ItemService.getItems(function (data) {
-        $scope.items = data;
-      });
-    };
-
-    $scope.addItem = function () {
-
-      ItemService.addItem($scope.item, function (data) {
-        $scope.items = data;
-        $location.path('/manageItem');
-      });
-    };
-
-  });
