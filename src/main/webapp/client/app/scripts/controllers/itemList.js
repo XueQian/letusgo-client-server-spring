@@ -10,7 +10,7 @@ angular.module('letusgoApp')
 
         $scope.$emit(new EventName().PARENT_ITEMLIST_ACTIVE);
 
-        ItemService.getGoodsItems(function (data) {
+        ItemService.getItems(function (data) {
 
             _(data).forEach(function (item) {
 

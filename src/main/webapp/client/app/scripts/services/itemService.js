@@ -3,7 +3,7 @@
 angular.module('letusgoApp')
   .service('ItemService', function ($http) {
 
-    this.getGoodsItems = function (callback) {
+    this.getItems = function (callback) {
       $http.get('http://localhost:8080/api/items').
         success(function (data) {
           callback(data);
@@ -12,7 +12,7 @@ angular.module('letusgoApp')
 
     this.addItem = function (item, callback) {
 
-      this.getGoodsItems(function (data) {
+      this.getItems(function (data) {
 
         var itemList = data;
 

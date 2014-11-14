@@ -9,7 +9,7 @@ angular.module('letusgoApp')
 
     $scope.$emit(new EventName().PARENT_MANAGE_ACTIVE);
 
-    ItemService.getGoodsItems(function (data) {
+    ItemService.getItems(function (data) {
 
         _(data).forEach(function (item) {
 
@@ -26,7 +26,7 @@ angular.module('letusgoApp')
 
       ItemService.deleteGoodsItems(index);
 
-      ItemService.getGoodsItems(function (data) {
+      ItemService.getItems(function (data) {
         $scope.items = data;
       });
     };
