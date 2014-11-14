@@ -10,6 +10,15 @@ angular.module('letusgoApp')
     $scope.$emit(new EventName().PARENT_MANAGE_ACTIVE);
 
     ItemService.getGoodsItems(function (data) {
+
+        _(data).forEach(function (item) {
+
+            CategoryService.getCategory(item.categoryId,function(data){
+                item.category = data.name;
+            });
+
+        });
+
       $scope.items = data;
     });
 
@@ -21,10 +30,6 @@ angular.module('letusgoApp')
         $scope.items = data;
       });
     };
-
-    CategoryService.getCategories(function (data) {
-      $scope.categories = data;
-    });
 
     $scope.addItem = function () {
 

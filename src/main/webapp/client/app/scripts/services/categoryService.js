@@ -33,7 +33,7 @@ angular.module('letusgoApp')
       $http.delete('http://localhost:8080/api/categories/' + id);
     };
 
-    this.getcategory = function (id, callback) {
+    this.getCategory = function (id, callback) {
 
       $http.get('http://localhost:8080/api/categories/' + id)
         .success(function (data) {
