@@ -33,12 +33,8 @@ angular.module('letusgoApp')
                 });
         };
 
-        this.modifyCategory = function (id, category, callback) {
-
-            $http.put('http://localhost:8080/api/categories/' + id, {category: category})
-                .success(function (data) {
-                    callback(data);
-                });
+        this.modifyCategory = function (category) {
+            $http.put('http://localhost:8080/api/categories/' + category.id, {id: category.id, name: category.name})
         };
 
         function hasExistCategory(category, categoryList) {

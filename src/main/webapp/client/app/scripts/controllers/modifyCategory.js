@@ -9,12 +9,12 @@ angular.module('letusgoApp')
 
     $scope.$emit(new EventName().PARENT_MANAGE_ACTIVE);
 
-    CategoryService.getcategory($routeParams.id, function (data) {
+    CategoryService.getCategory($routeParams.id, function (data) {
       $scope.category = data;
     });
 
-    $scope.modifyCategory = function (index) {
-      CategoryService.modifyCategory(index, $scope.category, function (data) {
+    $scope.modifyCategory = function (category) {
+      CategoryService.modifyCategory(category, function (data) {
         $scope.categories = data;
       });
     };
