@@ -17,10 +17,10 @@ angular.module('letusgoApp')
                 if (!hasExistItem(item, data)) {
                     $http.post('http://localhost:8080/api/items',
                         {id: null,
-                        name: item.name,
-                        unit: item.unit,
-                        price: item.price,
-                        categoryId: item.category.id});
+                            name: item.name,
+                            unit: item.unit,
+                            price: item.price,
+                            categoryId: item.category.id});
                 }
 
             });
@@ -38,12 +38,14 @@ angular.module('letusgoApp')
                 });
         };
 
-        this.modifyItem = function (id, item, callback) {
+        this.modifyItem = function (item) {
 
-            $http.put('http://localhost:8080/api/items/' + id, {item: item})
-                .success(function (data) {
-                    callback(data);
-                });
+            $http.put('http://localhost:8080/api/items/' + item.id,
+                {id: null,
+                    name: item.name,
+                    unit: item.unit,
+                    price: item.price,
+                    categoryId: item.category.id})
         };
 
         function hasExistItem(item, itemList) {

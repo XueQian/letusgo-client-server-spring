@@ -17,9 +17,8 @@ angular.module('letusgoApp')
       $scope.categories = data;
     });
 
-    $scope.modifyItem = function (index) {
-      ItemService.modifyItem(index, $scope.item, function () {
-      });
+    $scope.modifyItem = function (item) {
+      ItemService.modifyItem(item);
     };
 
   });
