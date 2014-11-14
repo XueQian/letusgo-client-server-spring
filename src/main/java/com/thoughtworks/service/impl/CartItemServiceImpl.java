@@ -46,4 +46,9 @@ public class CartItemServiceImpl implements CartItemService{
     public void deleteCartItem(int id) {
         cartItemDatabaseDaoImpl.deleteCartItem(id);
     }
+
+    @Override
+    public void deleteCartItems() {
+        cartItemDatabaseDaoImpl.deleteCartItems();
+    }
 }
