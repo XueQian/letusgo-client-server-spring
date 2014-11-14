@@ -38,4 +38,10 @@ angular.module('letusgoApp')
       });
     };
 
+    $scope.deleteCartItem = function(id){
+        console.log(id);
+        CartService.deleteCartItem(id);
+
+    }
+
   });
